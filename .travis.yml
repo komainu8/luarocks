@@ -30,16 +30,16 @@ integration_script: &integration_script
   - busted -o gtest --exclude-tags=gpg,git,unit --verbose -Xhelper "lua_dir=$PWD/lua_install,travis"
   - busted -o gtest --exclude-tags=gpg,git,unit --verbose -Xhelper "lua_dir=$PWD/lua_install,travis,env=full"
   - sudo -H luarocks install luarocks-fetch-gitrec
-          
+
 jobs:
   include:
     # Smoke tests for release branches
-    - stage: smoke
-      if: branch =~ [0-9].*
-      script: *smoke_script
-      os: linux
-      env:
-        - LUA="lua=5.3"
+#    - stage: smoke
+#      if: branch =~ [0-9].*
+#      script: *smoke_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.3"
     - stage: smoke
       if: branch =~ [0-9].*
       script: *smoke_script
@@ -48,47 +48,47 @@ jobs:
       env:
         - LUA="luajit=2.1"
     # Unit tests for linux
-    - stage: Unit on Linux
-      script: *unit_script
-      os: linux
-      env:
-        - LUA="lua=5.1"
-    - stage: Unit on Linux
-      script: *unit_script
-      os: linux
-      env:
-        - LUA="lua=5.2"
-    - stage: Unit on Linux
-      script: *unit_script
-      os: linux
-      env:
-        - LUA="lua=5.3"
-    - stage: Unit on Linux
-      script: *unit_script
-      os: linux
-      env:
-        - LUA="luajit=2.1"
-    # Integration tests for linux
-    - stage: Integration on Linux
-      script: *integration_script
-      os: linux
-      env:
-        - LUA="lua=5.1"
-    - stage: Integration on Linux
-      script: *integration_script
-      os: linux
-      env:
-        - LUA="lua=5.2"
-    - stage: Integration on Linux
-      script: *integration_script
-      os: linux
-      env:
-        - LUA="lua=5.3"
-    - stage: Integration on Linux
-      script: *integration_script
-      os: linux
-      env:
-        - LUA="luajit=2.1"
+#    - stage: Unit on Linux
+#      script: *unit_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.1"
+#    - stage: Unit on Linux
+#      script: *unit_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.2"
+#    - stage: Unit on Linux
+#      script: *unit_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.3"
+#    - stage: Unit on Linux
+#      script: *unit_script
+#      os: linux
+#      env:
+#        - LUA="luajit=2.1"
+#    # Integration tests for linux
+#    - stage: Integration on Linux
+#      script: *integration_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.1"
+#    - stage: Integration on Linux
+#      script: *integration_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.2"
+#    - stage: Integration on Linux
+#      script: *integration_script
+#      os: linux
+#      env:
+#        - LUA="lua=5.3"
+#    - stage: Integration on Linux
+#      script: *integration_script
+#      os: linux
+#      env:
+#        - LUA="luajit=2.1"
     # Unit tests for mac
     - stage: Unit on Mac
       script: *unit_script
