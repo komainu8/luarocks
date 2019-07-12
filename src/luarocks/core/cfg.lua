@@ -425,17 +425,6 @@ local function make_defaults(lua_version, target_cpu, platforms, home)
       defaults.external_lib_extension = "dylib"
       defaults.arch = "macosx-"..target_cpu
       defaults.variables.LIBFLAG = "-bundle -undefined dynamic_lookup -all_load"
-      defaults.external_deps_patterns = {
-         bin = { "?" },
-         lib = { "lib?.a", "lib?.dylib", "lib?.*.dylib" },
-         include = { "?.h" }
-      }
-      defaults.runtime_external_deps_patterns = {
-         bin = { "?" },
-         lib = { "lib?.dylib", "lib?.*.dylib" },
-         include = { "?.h" }
-      }
-
       local version = util.popen_read("sw_vers -productVersion")
       version = tonumber(version and version:match("^[^.]+%.([^.]+)")) or 3
       if version >= 10 then
