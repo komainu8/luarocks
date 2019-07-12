@@ -29,6 +29,7 @@ integration_script: &integration_script
   - ./makedist dev
   - busted -o gtest --exclude-tags=gpg,git,unit --verbose -Xhelper "lua_dir=$PWD/lua_install,travis"
   - busted -o gtest --exclude-tags=gpg,git,unit --verbose -Xhelper "lua_dir=$PWD/lua_install,travis,env=full"
+  - sudo -H luarocks install luarocks-fetch-gitrec
           
 jobs:
   include:
